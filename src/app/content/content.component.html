@@ -1,0 +1,18 @@
+<!-- <md-card-content class="cj-chatbot-card-content" fill-height  ngx-auto-scroll lock-y-offset="10" observe-attributes> -->
+<md-card-content class="cj-chatbot-card-content" fill-height ngx-auto-scroll lock-y-offset="10" observe-attributes>
+<div *ngFor="let msg of (conversations ? conversations:[]); let i = index">
+    <div [ngSwitch]="msg.message.msgType">
+            
+        <chat-content-usermsg *ngSwitchCase="'UserMsg'" [userMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-usermsg>
+        <chat-content-aibotmsg *ngSwitchCase="'AiBotMsg'" [aiBotMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-aibotmsg>
+        <chat-content-aibotinitmsg *ngSwitchCase="'AiBotInitMsg'" [aiBotInitMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-aibotinitmsg>
+        <div class="message" *ngSwitchDefault> Error: Unknown type of message!!! </div>
+        <!-- <chat-content-usermsg *ngSwitchCase="'UserMsg'" [userMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-usermsg>
+        <chat-content-loadingmsg *ngSwitchCase="'LoadingMsg'" [loadingMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-loadingmsg>
+        <chat-content-aibotmsg *ngSwitchCase="'AiBotMsg'" [aiBotMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-aibotmsg>
+        <chat-content-aibotinitmsg *ngSwitchCase="'AiBotInitMsg'" [aiBotInitMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-aibotinitmsg>
+        <chat-content-spectramsg *ngSwitchCase="'SpectraMsg'" [spectraMsg]="msg.message" [timestamp]="msg.createdAt"></chat-content-spectramsg>
+        <div class="message" *ngSwitchDefault> Error: Unknown type of message!!! </div> -->
+    </div>
+</div>
+</md-card-content>

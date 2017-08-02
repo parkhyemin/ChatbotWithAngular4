@@ -1,0 +1,78 @@
+      
+<div class="message">
+    <figure class="avatar">
+        <img src="{{ locPath }}/assets/image/chatbot_icon.png" alt="chatbot icon"/>
+    </figure>
+    <div [innerHTML]="aiBotMsg.message"></div>
+    
+    <!--배송조회-->
+    <ng-container *ngFor="let rspDeliv of (aiBotMsg.responseDeliveryList ? aiBotMsg.responseDeliveryList.slice(0, maxDeliveryNum): []); let last = last; let first = first; let index = index">
+        <div *ngIf="first">
+            <hr class="hrTop">
+        </div>
+
+        <div class="aibotmsg_line_background">&nbsp;</div>
+
+        <ng-container [ngSwitch]="rspDeliv.displayCode">
+            <div class="aibotmsg_line complete" *ngSwitchCase="'배달완료'">&nbsp;</div>
+            <div class="aibotmsg_line ongoing" *ngSwitchCase="'배달출발'">&nbsp;</div>
+            <div class="aibotmsg_line" *ngSwitchDefault>&nbsp;</div>
+        </ng-container>
+
+        <button class="historyButton" (click)="deliverySearch(aiBotMsg.answerId, rspDeliv)">
+        <table class="historyTable">
+            <tr>
+                <td class="historyDate">
+                    <table>
+                        <tr>
+                            <span class="monthAndDay">{{rspDeliv.scanCodeDT | date:'M.d'}} </span>
+                            <span class="dayOfTheWeek">{{rspDeliv.scanCodeDT | weekday }}</span><br>
+                        </tr>
+                        <ng-container [ngSwitch]="rspDeliv.displayCode">
+                                <tr class="historyStatus complete" *ngSwitchCase="'배달완료'"><td>{{rspDeliv.displayCode}}</td></tr>
+                                <tr class="historyStatus ongoing" *ngSwitchCase="'배달출발'"><td>{{rspDeliv.displayCode}}</td></tr>
+                                <tr class="historyStatus" *ngSwitchDefault><td>{{rspDeliv.displayCode}}</td></tr>
+                        </ng-container>
+                    
+                    </table>
+                </td>
+                <td class="historyContents">
+                    <table>
+                        <tr class="goodsName"><td>{{rspDeliv.skuNM}}</td></tr>
+                        <tr class="tespbillNum"><td>{{rspDeliv.trspbillNum}}</td></tr>   
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </button>
+
+        <div *ngIf="last">
+            <ng-container *ngIf="aiBotMsg.responseDeliveryList.length > maxDeliveryNum">
+            <button class="moreListButton" (click)="showMoreDelivList(maxDeliveryNum)">
+                <img id="moreImg" src="{{ locPath }}/assets/image/arrow.png" alt="more button image">
+                <span id="moreText">더보기</span>
+            </button>
+            </ng-container>
+            <hr class="hrMore">
+            <button class="actionChangeToggleBtn" [ngClass]="{checked:showInvoiceToggle}" (click)="showInvoiceInputBox()">송장 번호 입력</button>
+            <hr class="hrBottomList">
+        </div>
+    </ng-container>
+
+    <div *ngIf="aiBotMsg.showInvoiceBtn && aiBotMsg.responseDeliveryList.length == 0">
+        <button class="actionChangeToggleBtn" [ngClass]="{checked:showInvoiceToggle}" (click)="showInvoiceInputBox()">송장 번호 입력</button>
+    </div>
+    
+    <ng-container *ngFor="let rspMoreAns of (aiBotMsg.responseMoreAnswer ? aiBotMsg.responseMoreAnswer: []); let last = last; let first = first; let index = index">
+            <div *ngIf="first"> <hr class="hrMoreAns"> </div>
+            
+            <button class="selectButton" (click)="answerDetail(aiBotMsg.answerId, rspMoreAns)">{{rspMoreAns.answer}}</button>
+            <div *ngIf="last">
+                <hr class="hrBottom">
+            </div>        
+    </ng-container>
+
+    <div class="timestamp">
+        {{timestamp | date:'shortTime' | replace:'AM':'오전' | replace:'PM':'오후'}}
+    </div>
+</div> 

@@ -1,0 +1,39 @@
+
+.cj-chatbot-full-width {
+  width: 100%;
+}
+
+#cj-chatbot-toolbar-logoimg{
+  margin-left: 20px;
+  padding-bottom: 14px;
+  max-width: 150px;
+}
+
+#cj-chatbot-toolbar-button{
+  background: url("/assets/image/menu.jpg") no-repeat;
+  width: 25px;
+  height: 21px;
+  vertical-align: middle;
+  border: none;
+  margin-bottom: 14px;
+}
+
+.cj-chatbot-spacer {
+  flex: 1 1 auto;
+
+}
+.mat-toolbar{
+  background: #017dc3;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+}
+
+.cj-chatbot-card {
+  padding: 0;
+  /* max-width: 100%; */
+  max-height: 91%;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}

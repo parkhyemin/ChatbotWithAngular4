@@ -1,0 +1,23 @@
+<!--The whole content below can be removed with the new code.-->
+<md-toolbar>
+    <span class="cj-chatbot-spacer"></span>
+    <img id="cj-chatbot-toolbar-logoimg" src="{{ locPath }}/assets/image/chat_logo.png" alt="채팅로고">
+    <span class="cj-chatbot-spacer"></span>
+    <button id="cj-chatbot-toolbar-button" (click)="close()"></button>
+    
+</md-toolbar>
+
+<md-card class="cj-chatbot-card">
+
+  <!-- <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+
+  <chat-notice></chat-notice>
+
+  <chat-content></chat-content>
+
+  <chat-action [(loading)]="loading"></chat-action> -->
+
+  <chat-content></chat-content>
+  <chat-action></chat-action>
+
+</md-card>

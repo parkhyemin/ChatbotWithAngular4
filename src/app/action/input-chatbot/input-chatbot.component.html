@@ -1,0 +1,33 @@
+<table class="cj-chatbot-full-width" cellspacing="0">
+    <tr>
+        <td width="5%">
+        <button id="cj-chatbot-plus-button" md-button ></button>
+        <md-menu #plusMenu="mdMenu"  yPosition="above">
+            <button md-menu-item (click)="userSessionInit()">초기화</button>
+            <hr>
+            <button md-menu-item (click)="showFaq()">자주하는질문</button>
+            <hr>
+            <button md-menu-item (click)="showNotice()">공지사항</button>
+        </md-menu>
+        </td>
+        <td width="80%" >
+        <label for="cj-chatbot-msg-input-box">
+            <input #message class="cj-chatbot-msg-input-box" id="cj-chatbot-msg-input-box" mdInput (keyup)="inputKeyupEvt(message)" (keyup.enter)="sendMsg(message)" placeholder="{{ placeholderMsg }}">
+        </label>
+        </td>
+        <td width="15%">
+        <button id="cj-chatbot-sendMsg-button" (click)="sendMsg(message)">전송</button>
+        </td>
+    </tr>
+</table>
+    
+<!-- <table class="cj-chatbot-full-width" cellspacing="0">
+    <tr>
+        <td width="80%" >
+        <label for="cj-chatbot-msg-input-box"><input #message  mdInput (keyup.enter)="sendMsg(message)" autofocus=true placeholder="{{ placeholderMsg }}"></label>
+        </td>
+        <td width="20%">
+        <button id="cj-chatbot-sendMsg-button" (click)="sendMsg(message)">전송</button>
+        </td>
+    </tr>
+</table> -->

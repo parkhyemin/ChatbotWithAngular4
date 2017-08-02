@@ -1,0 +1,10 @@
+<div class="userMsgBoundry">
+    <div class="message user-message" >
+        {{userMsg.message}}
+        <br>
+    </div>
+    <div class="timestamp">
+        {{timestamp | date:'shortTime' | replace:'AM':'오전' | replace:'PM':'오후'}}
+    </div>
+</div>
+    

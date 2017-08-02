@@ -1,0 +1,7 @@
+{
+    "/chatbot/proxy/*":{
+        "target":"http://61.33.235.160",
+        "secure":false,
+        "logLevel":"debug"
+    }
+}

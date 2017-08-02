@@ -1,0 +1,10 @@
+
+<div class="message" >
+    <figure class="avatar">
+        <img src="{{ locPath }}/assets/image/chatbot_icon.png" alt="chatbot icon"/>
+    </figure>
+    <div [innerHTML]="aiBotInitMsg.initMsg"></div>
+    <div class="timestamp">
+        {{timestamp | date:'shortTime' | replace:'AM':'오전' | replace:'PM':'오후'}}
+    </div>
+</div>

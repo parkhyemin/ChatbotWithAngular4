@@ -1,0 +1,46 @@
+
+.userMsgBoundry{
+.message.user-message {
+    clear: both;
+    padding: 2px 8px 2px 18px;
+    font-size: 11px;
+    line-height: 1.4;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    max-width: 70%;
+    
+    &::before {
+     content: '';
+      position: relative;
+      bottom: 2px;
+      border-top: 7px solid #007dc3;
+      left: 15px;
+      float: right;
+      border-right: 7px solid transparent;
+    }
+    
+    &.user-message {
+      float: right;
+      color: #fff;
+      background: #007dc3;
+      border-radius: 5px 0 5px 5px;
+    }
+
+    &.new {
+      transform: scale(0);
+      transform-origin: 0 0;
+      animation: bounce 500ms linear both;
+    }
+  }
+  .timestamp {
+      position: relative;
+      font-size: 8px;
+      color: grey;
+      font-weight: bolder;
+      float: right;
+      top: 6px;
+      right: 2px;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    }
+    }

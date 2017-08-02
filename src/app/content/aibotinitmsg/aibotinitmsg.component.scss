@@ -1,0 +1,420 @@
+
+//서버에서 보내오는 버튼 CSS 설정 시작 //
+:host /deep/ .message {
+
+  .elConnectAdviserBtn {
+    background: #d4d4d3;
+    width: 100%;      
+    border-style: none;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #666666;
+    font-weight: bold;
+  }
+  
+  .elConnectAdviserBtn:active {
+    text-shadow: #1e4158 0 1px 0;
+    position: relative;
+    top: 1px;
+  }
+
+  .elConnectAdviserBtn.checked {
+    background: #aaaaaa;
+    color: black;
+  }
+
+  .elMovePageBtn {
+    background: #d4d4d3;
+    width: 100%;      
+    border-style: none;
+    padding: 2px 0;
+    margin-bottom: 3px;
+    font-size: 11px;
+    color: #666666;
+    font-weight: bold;
+  }
+  
+  .elMovePageBtn:active {
+    text-shadow: #1e4158 0 1px 0;
+    position: relative;
+    top: 1px;
+  }
+
+  .elMovePageBtn.checked {
+    background: #aaaaaa;
+    color: black;
+  }
+
+  .elReserveCancelBtn {
+    background: #d4d4d3;
+    width: 100%;      
+    border-style: none;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #666666;
+    font-weight: bold;
+  }
+  
+  .elReserveCancelBtn:active {
+    text-shadow: #1e4158 0 1px 0;
+    position: relative;
+    top: 1px;
+  }
+
+  .elReserveCancelBtn.checked {
+    background: #aaaaaa;
+    color: black;
+  }
+
+  .hrBottomList{
+      margin: 5px 0 -5px 0;
+  }
+
+}
+//서버에서 보내오는 버튼 CSS 설정 끝 //
+
+  .message {
+    clear: both;
+    float: left;
+    padding: 0 10px;
+    border-radius: 0 10px 10px 10px;
+    background: #ebebeb;
+    font-size: 11px;
+    line-height: 1.5;
+    margin-left: 40px;
+    margin-top: 10px;
+    position: relative;
+    max-width: 60%;
+
+    li{
+      padding: 0px;
+      margin: 0px;
+    }
+    
+    &::before {
+      content: '';
+      position: relative;
+      bottom: -8px;
+      border-top: 8px solid #ebebeb;
+      left: -18px;
+      border-left: 8px solid transparent;
+    }
+    
+    .avatar {
+      position: relative;
+      bottom: 25px;
+      left: -55px;
+      border-radius: 30px;
+      width: 35px;
+      height: 45px;
+      overflow: hidden;
+      margin: 0px 0px -55px 0px;
+      padding: 0;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+// 구분선에 따른 설정 시작 //
+    .hrTop{
+      margin-top: 2px;
+      margin-bottom: -2px;
+    }
+    .hrBottom{
+      margin: 0 0 -5px 0;
+    }
+    .hrBottomList{
+      margin: 5px 0 -5px 0;
+    }
+    .hrMoreAns{
+      margin-top: 2px;
+      margin-bottom: 5px;
+    }
+    .hrMore{
+       margin: 4px 0 2px 0;
+     }
+// 구분선에 따른 설정 끝 //
+
+// 상태에 따른 글씨 색상 변경 시작 // 
+    .historyButton{
+      background: #ffffff;
+      width: 100%;
+      border-style: none;
+
+      .historyTable{
+        width: 100%;
+
+        .historyDate{
+            width: 30%;
+            text-align: center;
+            color: #3d4657;
+            .monthAndDay{
+              font-size: 10px;
+              font-weight: bold;
+           }
+           .dayOfTheWeek{
+              font-size: 8px;
+              font-weight: initial;
+           }
+           .historyStatus{
+                font-size: 9px;
+                color: #f8971d;
+            }
+            .historyStatus.complete{
+                font-weight: bold;
+                font-size: 10px;
+                color: #007dc3;
+            }
+            .historyStatus.ongoing{
+                font-size: 10px;
+                color: #e31b23;
+            }
+            .historyStatus.cancel{
+                color: #e31b23;
+            }
+          }
+
+          .historyContents{
+           width: 70%;
+           text-align: left;
+           font-size: 10px;
+           vertical-align: middle;
+          
+            .goodsName{
+                font-weight: bold;
+                color: #3d4657;
+            }
+            .tespbillNum{
+                color: #aeb2b5;
+            }
+            
+        }
+      }
+    }
+// 상태에 따른 글씨 색상 변경 끝 //
+
+// 상품의 상태에 따른 상태바 색상변화 시작 // 
+
+  // 배송조회 line 시작 //
+    .aibotmsg_line_background{
+      content: '';
+      position: relative;
+      top: 8px;
+      width: 100%;
+      height: 4px;
+      background: #e5e0dd;
+    }
+    .aibotmsg_line.complete{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 98%;
+      height: 4px;
+      background: #007cc2;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #007dc3;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+    .aibotmsg_line.ongoing{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 66%;
+      height: 4px;
+      background: #e31b23;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #e31b23;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+    .aibotmsg_line{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 33%;
+      height: 4px;
+      background: #f8971d;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #f8971d;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+  // 배송목록 조회 line 끝 //
+
+  // 예약목록 조회 line 시작 //
+    .aibotmsg_line_reservation.complete{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 98%;
+      height: 4px;
+      background: #007cc2;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #007dc3;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+    .aibotmsg_line_reservation.cancel{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 98%;
+      height: 4px;
+      background: #e31b23;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #e31b23;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+    .aibotmsg_line_reservation{
+      content: '';
+      position: relative;
+      top: 4px;
+      width: 98%;
+      height: 4px;
+      background: #f8971d;
+      
+      &::before{
+      content: '';
+      position: relative;
+      border-top: 4px solid #f8971d;
+      left: 4px;
+      float: right;
+      border-right: 4px solid transparent;
+      }
+    }
+  // 예약목록 조회 line 끝 // 
+
+// 상품의 상태에 따른 상태바 색상변화 끝 // 
+
+// 상황별 Button 설정 시작 //
+    .selectButton{
+      font-size: 10px;
+      background: #007dc3;
+      width: 100%;
+      color: #ffffff;
+      border-style: none;
+      margin-bottom: 5px;
+      font-weight: bold;
+      height: 30px;
+    }
+
+     .moreListButton{
+      background: rgb(212,212,211);
+      width: 100%;      
+      border-style: none;
+      margin-top: 5px;
+      padding: 0px;
+        #moreImg{
+            width: 11px; 
+            position: relative;
+            top: 1px;
+        }
+        #moreText{
+            font-size: 11px;
+            color: #666666;
+            font-weight: bold;
+        }
+     }
+    .moreListButton:active {
+      text-shadow: #1e4158 0 1px 0;
+      position: relative;
+      top: 1px;
+    }
+
+    .actionChangeToggleBtn {
+    background: #d4d4d3;
+    width: 100%;      
+    border-style: none;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #666666;
+    font-weight: bold;
+  }
+  
+  .actionChangeToggleBtn:active {
+    text-shadow: #1e4158 0 1px 0;
+      position: relative;
+      top: 1px;
+  }
+
+  .actionChangeToggleBtn.checked {
+    background: #aaaaaa;
+    color: black;
+  }
+
+// 상황별 Button 설정 끝 //
+
+    &:last-child {
+      margin-bottom: 10px;
+    }
+    
+    &.new {
+      transform: scale(0);
+      transform-origin: 0 0;
+      animation: bounce 500ms linear both;
+    }
+    
+    &.loading {
+
+      &::before {
+        border: none;
+        animation-delay: .15s;
+      }
+
+      & span {
+        display: block;
+        font-size: 0;
+        width: 50px;
+        height: 20px;
+        position: relative;
+
+        &::before {
+          margin-left: -7px;
+        }
+
+        &::after {
+          margin-left: 7px;
+          animation-delay: .3s;
+        }
+      }
+    }
+  }
+  
+// 시간 설정 시작 //
+  .timestamp {
+      position: relative;
+      font-size: 8px;
+      color: grey;
+      font-weight: bolder;
+      float: right;
+      right: -53px;
+    }
+// 시간 설정 끝 //

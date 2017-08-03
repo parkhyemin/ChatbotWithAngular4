@@ -45,9 +45,8 @@ export class AppComponent {
     this.userSession.company = '1';
     this.userSession.deviceId = '';
     this.userSession.sessionKey = 'TestSessionKey_PHM';
-    //console.log(this.userSession);
-    //issue2를 branch를 생성함
-    //master branch를 수정함
+    console.log(this.userSession);
+    
     // this.route.queryParams.subscribe((params: Params) => {
       
     //   // phone=핸드폰번호

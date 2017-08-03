@@ -46,6 +46,7 @@ export class AppComponent {
     this.userSession.deviceId = '';
     this.userSession.sessionKey = 'TestSessionKey_PHM';
     //console.log(this.userSession);
+    //또주석
     // this.route.queryParams.subscribe((params: Params) => {
       
     //   // phone=핸드폰번호

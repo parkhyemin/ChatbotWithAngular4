@@ -46,6 +46,7 @@ export class AppComponent {
     this.userSession.deviceId = '';
     this.userSession.sessionKey = 'TestSessionKey_PHM';
     console.log(this.userSession);
+    // 주석 branch_phm
     
     // this.route.queryParams.subscribe((params: Params) => {
       

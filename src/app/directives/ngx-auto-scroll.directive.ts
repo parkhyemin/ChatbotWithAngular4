@@ -10,10 +10,11 @@ export class NgxAutoScroll implements AfterContentInit, OnDestroy {
     private nativeElement: HTMLElement;
     private isLocked: boolean = false;
     private mutationObserver: MutationObserver;
+    private scrollInitTop: number = 0;
 
     constructor(element: ElementRef) {
         this.nativeElement = element.nativeElement;
-        // console.log(this.nativeElement);
+        this.scrollInitTop = this.nativeElement.scrollTop;
     }
 
     public getObserveAttributes(): boolean {
@@ -41,8 +42,16 @@ export class NgxAutoScroll implements AfterContentInit, OnDestroy {
         this.scrollDown();
     }
 
+    public forceScrollUp(): void {
+        this.scrollUp();
+    }
+
     private scrollDown(): void {
         this.nativeElement.scrollTop = this.nativeElement.scrollHeight;
+    }
+
+    private scrollUp(): void {
+        this.nativeElement.scrollTop = this.scrollInitTop;
     }
 
     @HostListener("scroll")

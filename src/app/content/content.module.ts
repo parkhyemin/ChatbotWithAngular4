@@ -6,7 +6,7 @@ import { AibotmsgComponent } from './aibotmsg/aibotmsg.component';
 import { AiBotInitMsgComponent } from './aibotinitmsg/aibotinitmsg.component';
 import { ReplacePipe } from '../pipes/replace.pipe';
 import { WeekDayPipe } from '../pipes/weekday.pipe';
-import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdCheckboxModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
+import { MdInputModule, MdSelectModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdCheckboxModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FillHeightDirective } from '../directives/fill-height.directive';
 import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
 
@@ -16,6 +16,7 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
       CommonModule,
       MdInputModule,
       MdDialogModule,
+      MdSelectModule,
       MdCardModule,
       MdCheckboxModule,
       MdButtonModule,

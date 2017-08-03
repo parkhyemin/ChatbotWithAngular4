@@ -30,7 +30,17 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
     }
 
     public forceScrollDown(): void {
-      // this.ngxAutoScroll.forceScrollDown();
+      if( this.ngxAutoScroll ){
+        console.log('forceScrollDown');
+        this.ngxAutoScroll.forceScrollDown();
+      }
+    }
+
+    public forceScrollUp(): void {
+      if( this.ngxAutoScroll ){
+        console.log('forceScrollUp');
+        this.ngxAutoScroll.forceScrollUp();
+      }
     }
 
     subscribe() {

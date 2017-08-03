@@ -4,10 +4,6 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-@import 'mixin';
-
-@include font-face(NotoSans, assets/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular, null, null, otf);
-
 .mobileBodyClass {
   height: 100vh;
   // overflow: auto;

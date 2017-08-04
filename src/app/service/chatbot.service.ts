@@ -51,7 +51,7 @@ export class ChatbotService {
             
             let aiBotMsg: AiBotMsg = res;
             this.conversationService.broadcast(new Conversation(ConversationWriter.AI, aiBotMsg, Date.now()));
-            console.log(aiBotMsg);
+            // console.log(aiBotMsg);
         },
         error => {
             // this.errorMessage = <any>error

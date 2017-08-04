@@ -34,7 +34,7 @@ export class UtilsService {
   }
 
   public getInitInquiryData() {
-    console.log("=========== getInitInquiryData ===========");
+    // console.log("=========== getInitInquiryData ===========");
     return {
       number: "",
       question: "",

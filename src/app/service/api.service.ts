@@ -37,7 +37,7 @@ export class ApiService {
   public post(path: string, data: any): Observable<any> {
     this.setHeader("Content-Type", "application/json");
     let body = JSON.stringify(data);
-    console.log(`${this.API_URL}${path}`);
+    // console.log(`${this.API_URL}${path}`);
     return this.http.post(`${this.API_URL}${path}`, body, { headers: this.headers })
       .map(this.extractData)
       .catch(this.handleError);

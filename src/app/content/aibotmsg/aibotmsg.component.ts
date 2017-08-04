@@ -94,7 +94,56 @@ export class AibotmsgComponent implements OnInit {
   }
 
   public movePage(evt, url){
+    console.log("move Page!");
+    console.log(url);
+    // const uri = new URL(url);  // ie not supported!
+    const uri = document.createElement('a');
+    uri.href = url;
 
+    console.log("search => " + uri.search);
+    console.log("hostname => " + uri.hostname);
+    console.log("path => " + uri.pathname);
+    let newWindowOptions = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
+    let newWindowPage: Window = null;
+    switch(this.userSession.media) {
+      case "APP":
+        if (this.aiBotMsg.answerId.startsWith("C")) {
+          // this.clonedApi.setApiUrl(uri.hostname);
+          // this.clonedApi.post(uri.pathname, {}).subscribe(
+          //   (res) => {
+          //     console.log(res);
+          //   },
+          //   (err) => {
+          //     console.log(err);
+          //   }
+          // );
+          // POST
+          console.log("post process!!!!");
+        } else if (this.aiBotMsg.answerId.startsWith("F")) {
+          window.location.href = url;
+        } else {
+          window.location.href = url;
+        }
+        break;
+      case "WEB":
+      case "COM":
+        newWindowPage = window.open(url, '_blank');
+        /* ----------------------------------------------------
+        if (uri.search) {
+          // POST
+          console.log("post process!!!!");
+        } else {
+          newWindowPage = window.open(url, '_blank');
+        }
+        ---------------------------------------------------- */
+        break;
+      case "KKO":
+
+        break;
+      default:
+
+        break;
+    }
   }
 
   // 예약 취소
@@ -119,7 +168,9 @@ export class AibotmsgComponent implements OnInit {
     }
   }
   public connectAdviser(evt){
-
+    console.log("connect adviser!");
+    // 스펙트라에서 제공하는 cometD 라이브러 사용하여 WebSoket 통신
+    // this.spectraService.initChat().add(this.initChatCallback);
   }
 
   public answerDetail(answerId: string, rspMoreAns: RspMoreAnswer) {

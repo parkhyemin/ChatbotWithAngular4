@@ -73,6 +73,14 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
           case "AiBotInitMsg":
             this.conversations.push(payload);
             break;
+          // case "SpectraMsg":
+          //   if (payload.message.flag === 'A') {
+          //     //  remove loading image.
+          //     console.log("remove loading image. !!!!");
+          //     this.conversations.pop();
+          //   }
+          //   this.conversations.push(payload);
+            // break;
           case "UserMsg":
             this.conversations.push(payload);
             break;

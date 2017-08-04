@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalStorageService, SessionStorageService, SessionStorage } from 'ngx-webstorage';
 
 import { ActionComponent } from './action.component';
 import { InputChatbotComponent } from './input-chatbot/input-chatbot.component';
 import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
+import { InputInvoiceComponent } from './input-invoice/input-invoice.component';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMe
   ],
   declarations: [
     ActionComponent,
-    InputChatbotComponent
+    InputChatbotComponent,
+    InputInvoiceComponent
   ],
   entryComponents: [
   ],
@@ -25,6 +28,7 @@ import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMe
     ActionComponent
   ],
   providers: [
+    SessionStorageService
   ]
 })
 export class ActionModule { }

@@ -1,0 +1,59 @@
+
+.cj-chatbot-full-width {
+  width: 100%;
+  height: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+
+
+td{
+
+  border-top: 1px solid #ebebeb;
+padding: 0px;
+}
+.cj-chatbot-card-action {
+  margin: 0px;
+  padding: 0px;
+}
+
+.cj-chatbot-msg-inputInvoice-box {
+    width: 98%;
+    height: 80%;
+    border: 0px;
+    padding-left: 5px;
+    font-size:13px;
+    
+}
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: red;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: red;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: red;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: red;
+    }
+
+#cj-chatbot-sendMsg-button {
+  background: #007dc3;
+  color: #ffffff;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  border:none;
+}
+
+#cj-chatbot-plus-button{
+  background: url("/assets/image/plus.png") no-repeat;
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: none;
+}

@@ -1,5 +1,6 @@
 import { Component, ViewChild, ElementRef, OnInit, Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
+import { LocalStorageService, SessionStorageService, SessionStorage } from 'ngx-webstorage';
 import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
 import { Inquiry } from '../../models/inquiry.model';
@@ -9,9 +10,9 @@ import { AiBotMsg } from '../../models/aibotmsg.model';
 import { ApiService  } from '../../service/api.service';
 import { ChatbotService  } from '../../service/chatbot.service';
 import { UtilsService } from '../../service/utils.service';
-import { ContentComponent } from '../../content/content.component';
 import { ConversationService } from '../../service/conversation.service';
 import { UserMsg } from '../../models/usermsg.model';
+import { Session } from '../../models/session.model';
 
 
 @Component({
@@ -31,11 +32,12 @@ import { UserMsg } from '../../models/usermsg.model';
       
       private params:Inquiry;
       
+      @SessionStorage('userSession')
+      public userSession: Session;
 
       constructor(
                   private utilsService: UtilsService,
                   private chatbotService: ChatbotService,
-                  private contentComponent : ContentComponent,
                   private conversationService : ConversationService
                 ) {
     

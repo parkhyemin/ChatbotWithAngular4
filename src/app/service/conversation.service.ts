@@ -11,7 +11,6 @@ import { Conversation } from '../models/conversation.model';
 import { ConversationWriter } from '../models/conversation_writer.model';
 import { UserMsg } from '../models/usermsg.model';
 import { Msg } from '../models/msg.model';
-import {ContentComponent } from '../content/content.component';
 
 type MessageCallback = (payload: any) => void;
 

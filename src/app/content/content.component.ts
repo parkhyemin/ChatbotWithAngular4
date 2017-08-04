@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
 import { LocalStorageService, SessionStorageService, SessionStorage } from 'ngx-webstorage';
@@ -15,38 +15,56 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
   })
-  export class ContentComponent{
+  export class ContentComponent implements OnInit{
 
     @ViewChild(NgxAutoScroll) ngxAutoScroll: NgxAutoScroll;
 
     private subscription: Subscription;
+    
     private conversations: Array<Conversation> = [];
 
     @SessionStorage('userSession')
     private userSession: Session;
 
-    constructor(public conversationService:ConversationService ){
+    constructor(private conversationService:ConversationService ){
       this.subscribe();
     }
 
     public forceScrollDown(): void {
       if( this.ngxAutoScroll ){
-        console.log('forceScrollDown');
         this.ngxAutoScroll.forceScrollDown();
       }
     }
 
     public forceScrollUp(): void {
       if( this.ngxAutoScroll ){
-        console.log('forceScrollUp');
         this.ngxAutoScroll.forceScrollUp();
       }
+    }
+
+    ngOnInit() {
+    }
+  
+    ngOnDestroy() {
+      this.unsubscribe();
+    }
+  
+    get unsubscribed() {
+      return this.subscription && this.subscription.closed;
+    }
+    
+    clear() {
+      this.conversations = [];
+    }
+
+    unsubscribe() {
+      this.subscription.unsubscribe();
     }
 
     subscribe() {
       this.subscription = this.conversationService.subscribeAll((payload) => {
         console.log("------------- subscription ------------------" );
-        // console.log("msg type => " + payload.message.msgType );
+        console.log("msg type => " + payload.message.msgType );
         switch (payload.message.msgType) {
           case "AiBotMsg":
             this.conversations.push(payload);

@@ -44,10 +44,15 @@ import { Session } from '../../models/session.model';
       }
     
       ngOnInit() {
-        this.placeholderMsg = "내용을 입력해 주세요.";
+        if (this.userSession.inputType === "address") {
+          this.placeholderMsg = "주소를 입력해 주세요.";
+        } else {
+          this.placeholderMsg = "내용을 입력해 주세요.";
+        }
       }
     
       public sendMsg(msg) {
+
         const userMsg:UserMsg = {msgType:"UserMsg", userId: uuid(), message:msg.value, telId:'010-1234-5678'};
         this.conversationService.broadcast(new Conversation(ConversationWriter.CUSTOMER, userMsg, Date.now()));
 

@@ -31,15 +31,11 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
     }
 
     public forceScrollDown(): void {
-      if( this.ngxAutoScroll ){
-        this.ngxAutoScroll.forceScrollDown();
-      }
+      this.ngxAutoScroll.forceScrollDown();
     }
 
     public forceScrollUp(): void {
-      if( this.ngxAutoScroll ){
-        this.ngxAutoScroll.forceScrollUp();
-      }
+      this.ngxAutoScroll.forceScrollUp();
     }
 
     ngOnInit() {

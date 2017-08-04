@@ -17,7 +17,9 @@ button.fab-bottom-button {
   background: transparent;
   border-style: none;
   bottom: 50px;
+  width: 30px;
   right: 0;
+  box-shadow: 0 -2px 5px -2px rgba(0,0,0,.2), 0 -2px 5px 0 rgba(0,0,0,.12);
   position: fixed;
   .material-icons {
     color: black;
@@ -28,8 +30,10 @@ button.fab-top-button {
   background: transparent;
   border-style: none;
   bottom: 30px;
+  width: 30px;
   right: 0;
   position: fixed;
+  box-shadow: 0 3px 5px -2px rgba(0,0,0,.2), 0 3px 5px -2px rgba(0,0,0,.12);
   .material-icons {
     color: black;
     font-size: 30px;

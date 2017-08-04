@@ -23,7 +23,7 @@ export class ConversationService {
   }
 
   subscribeAll(callback: MessageCallback): Subscription {
-    return this.handler.subscribe(callback);
+    return this.handler.map(conversation => conversation).subscribe(callback);
   }
   
 }

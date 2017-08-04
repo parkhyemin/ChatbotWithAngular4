@@ -35,7 +35,6 @@ export class UtilsService {
 
   public getInitInquiryData() {
     console.log("=========== getInitInquiryData ===========");
-    console.log(this.userSession);
     return {
       number: "",
       question: "",

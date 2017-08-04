@@ -3,7 +3,7 @@
     <figure class="avatar">
         <img src="{{ locPath }}/assets/image/chatbot_icon.png" alt="chatbot icon"/>
     </figure>
-    <div [innerHTML]="aiBotMsg.message"></div>
+    <div [innerHTML]="aiBotMsg.message | aiBotMsgFmt"></div>
     
     <!--배송조회-->
     <ng-container *ngFor="let rspDeliv of (aiBotMsg.responseDeliveryList ? aiBotMsg.responseDeliveryList.slice(0, maxDeliveryNum): []); let last = last; let first = first; let index = index">
@@ -63,6 +63,7 @@
         <button class="actionChangeToggleBtn" [ngClass]="{checked:showInvoiceToggle}" (click)="showInvoiceInputBox()">송장 번호 입력</button>
     </div>
     
+    <!--c 처음 선택버튼-->
     <ng-container *ngFor="let rspMoreAns of (aiBotMsg.responseMoreAnswer ? aiBotMsg.responseMoreAnswer: []); let last = last; let first = first; let index = index">
             <div *ngIf="first"> <hr class="hrMoreAns"> </div>
             
@@ -71,7 +72,59 @@
                 <hr class="hrBottom">
             </div>        
     </ng-container>
+    <!--예약목록-->
+    <ng-container *ngFor="let rspRsv of (aiBotMsg.responseReserveList ? aiBotMsg.responseReserveList.slice(0, maxReserveNum): []); let last = last; let first = first; let index = index">
+        <div *ngIf="first"> <hr class="hrTop"> </div>
 
+        <ng-container [ngSwitch]="rspRsv.prngstsNm">
+            <div class="aibotmsg_line_reservation complete" *ngSwitchCase="'택배예약'">&nbsp;</div>
+            <div class="aibotmsg_line_reservation cancel" *ngSwitchCase="'예약취소'">&nbsp;</div>
+            <div class="aibotmsg_line_reservation" *ngSwitchDefault>&nbsp;</div>
+        </ng-container>
+
+        <button class="historyButton" (click)="reserveDetail(aiBotMsg.answerId, rspRsv)">
+        <table class="historyTable">
+            <tr>
+                <th class="historyDate">
+                    <table>
+                        <tr>
+                            <span class="monthAndDay">{{rspRsv.acptDt | date:'M.d'}} </span>
+                            <span class="dayOfTheWeek">{{rspRsv.acptDt | weekday}}</span>
+                        </tr>
+                        <ng-container [ngSwitch]="rspRsv.prngstsNm">
+                            <tr class="historyStatus complete" *ngSwitchCase="'택배예약'"><td>{{rspRsv.prngstsNm}}</td></tr>
+                            <tr class="historyStatus cancel" *ngSwitchCase="'예약취소'"><td>{{rspRsv.prngstsNm}}</td></tr>
+                            <tr class="historyStatus" *ngSwitchDefault><td>{{rspRsv.prngstsNm}}</td></tr>
+                        </ng-container>
+                    </table>
+                </th>
+                <td class="historyContents">
+                    <table>
+                         <tr class="goodsName">{{rspRsv.goods}}</tr>
+                          <tr class="tespbillNum">{{rspRsv.prngNum}}</tr>
+                           
+                    </table>
+                </td>
+            </tr>
+        </table>
+        </button>
+
+        <div *ngIf="last">
+            <ng-container *ngIf="aiBotMsg.responseReserveList.length > maxReserveNum">
+            <button class="moreListButton" (click)="showMoreReserveist(maxReserveNum)">
+                <img id="moreImg" src="{{ locPath }}/assets/image/arrow.png" alt="more button image">
+                <span id="moreText">더보기</span>
+            </button><br>
+            </ng-container>
+            <!-- ------------------------- 예약 번호 입력 기능 삭제 --------------------------------------
+            <hr class="hrMore">
+            <button class="actionChangeToggleBtn" [ngClass]="{checked:showReserveToggle}" (click)="showReserveInputBox()">예약 번호 입력</button>
+            ---------------------------------------------------------------------------------------- -->
+            <hr class="hrBottomList">
+        </div>
+
+    </ng-container>
+    
     <div class="timestamp">
         {{timestamp | date:'shortTime' | replace:'AM':'오전' | replace:'PM':'오후'}}
     </div>

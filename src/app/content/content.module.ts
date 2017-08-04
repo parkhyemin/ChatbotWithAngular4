@@ -6,6 +6,7 @@ import { AibotmsgComponent } from './aibotmsg/aibotmsg.component';
 import { AiBotInitMsgComponent } from './aibotinitmsg/aibotinitmsg.component';
 import { ReplacePipe } from '../pipes/replace.pipe';
 import { WeekDayPipe } from '../pipes/weekday.pipe';
+import { AiBotMsgFmtPipe } from '../pipes/ai-bot-msg-fmt.pipe';
 import { MdInputModule, MdSelectModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdCheckboxModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { FillHeightDirective } from '../directives/fill-height.directive';
 import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
@@ -30,7 +31,8 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
       AibotmsgComponent, 
       AiBotInitMsgComponent, 
       ReplacePipe,
-      WeekDayPipe
+      WeekDayPipe,
+      AiBotMsgFmtPipe
     ],
     entryComponents: [
     ],
@@ -39,7 +41,8 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
       FillHeightDirective, 
       NgxAutoScroll, 
       ReplacePipe, 
-      WeekDayPipe
+      WeekDayPipe,
+      AiBotMsgFmtPipe
     ],
     providers: [
 

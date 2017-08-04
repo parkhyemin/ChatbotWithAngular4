@@ -27,24 +27,52 @@ export class ChatbotService {
     this.clonedApi.setApiUrl('/chatbot/proxy');
   }
 
-  public chatBotMsgApiCall(params: any): Subscription {
+    public chatBotApiCall(params: Inquiry): Observable<any> {
+        return this.clonedApi.post("/finbot/asyncAutoAnswer.wn", params);
+    }
 
-    return this.clonedApi.post('/finbot/asyncAutoAnswer.wn', params)
-    .subscribe(
-    res => {
-      res.msgType = 'AiBotMsg';
-      res.responseDeliveryList.map(item =>{
-          item.scanCodeDT = item.scanCodeDT.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
-          return item;
-    });
-        
-      let aiBotMsg: AiBotMsg = res;
-      this.conversationService.broadcast(new Conversation(ConversationWriter.AI, aiBotMsg, Date.now()));
-    },
-    error => {
-        // this.errorMessage = <any>error
-    })
+    // normal api
+    public chatBotMsgApiCall(params: any): Subscription {
+
+        return this.clonedApi.post('/finbot/asyncAutoAnswer.wn', params)
+        .subscribe(
+            res => {
+            res.msgType = 'AiBotMsg';
+            res.responseDeliveryList.map(item =>{
+                item.scanCodeDT = item.scanCodeDT.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
+                return item;
+            });
+            res.responseReserveList.map(item => {
+                // date format convert
+                item.acptDt = item.acptDt.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
+                item.gthprearrDt = item.gthprearrDt.replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3");
+                return item;
+            });
+            
+            let aiBotMsg: AiBotMsg = res;
+            this.conversationService.broadcast(new Conversation(ConversationWriter.AI, aiBotMsg, Date.now()));
+            console.log(aiBotMsg);
+        },
+        error => {
+            // this.errorMessage = <any>error
+        })
   }
+
+    public chatBotReserveCancelApiCall(params: object): Subscription {
+      
+        return this.clonedApi.post("/finbot/cancelReserve.wn", params)
+            .retry(3)
+            .subscribe(
+            res => {
+            res.msgType = "AiBotMsg";
+            let aiBotMsg: AiBotMsg = res;
+            this.conversationService.broadcast( new Conversation(ConversationWriter.AI, aiBotMsg, Date.now()) );
+            },
+            error => {
+            // this.errorMessage = <any>error
+            }
+        );
+    }
 
   public chatBotInitMsgApiCall(params: object): Subscription {
     return this.clonedApi.post('/finbot/init.wn', params)

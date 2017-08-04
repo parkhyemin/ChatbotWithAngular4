@@ -1,7 +1,7 @@
 <table class="cj-chatbot-full-width" cellspacing="0">
     <tr>
         <td width="5%">
-        <button id="cj-chatbot-plus-button" md-button ></button>
+        <button id="cj-chatbot-plus-button" md-button [mdMenuTriggerFor]="plusMenu"></button>
         <md-menu #plusMenu="mdMenu"  yPosition="above">
             <button md-menu-item (click)="userSessionInit()">초기화</button>
             <hr>
@@ -20,14 +20,3 @@
         </td>
     </tr>
 </table>
-    
-<!-- <table class="cj-chatbot-full-width" cellspacing="0">
-    <tr>
-        <td width="80%" >
-        <label for="cj-chatbot-msg-input-box"><input #message  mdInput (keyup.enter)="sendMsg(message)" autofocus=true placeholder="{{ placeholderMsg }}"></label>
-        </td>
-        <td width="20%">
-        <button id="cj-chatbot-sendMsg-button" (click)="sendMsg(message)">전송</button>
-        </td>
-    </tr>
-</table> -->

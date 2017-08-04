@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMenuModule, MdToolbarModule, MdIconModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
@@ -26,6 +27,7 @@ import { NoticeComponent } from './notice/notice.component';
     routing,
     BrowserModule,
     HttpModule, 
+    BrowserAnimationsModule,
     CommonModule, 
     ActionModule, 
     ContentModule, 

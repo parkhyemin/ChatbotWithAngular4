@@ -21,74 +21,90 @@ import { Session } from '../../models/session.model';
     styleUrls: ['./input-chatbot.component.scss']
   })
 
-  export class InputChatbotComponent implements OnInit {
-    
-      private subscription: Subscription;
-      private aiBotMsg: AiBotMsg;
-    
-      @ViewChild('message') msgInput: ElementRef;
-        
-      public placeholderMsg = "내용을 입력해 주세요.";
-      
-      private params:Inquiry;
-      
-      @SessionStorage('userSession')
-      public userSession: Session;
+export class InputChatbotComponent implements OnInit {
 
-      private chatBotMsgApiCallback = () => {
-        console.log("---------->>>>> chatBotMsgApiCallback <<<<----------------");
-      
-        // Reset lastRspDeliveryList lastRspReserveList for company type member
-        if (this.userSession.company == "0000000000") {
-    
-        } else {
-            this.userSession.lastRspDeliveryList = null;
-            this.userSession.lastRspReserveList = null;
-        }
-    
-      };
+  private subscription: Subscription;
+  private aiBotMsg: AiBotMsg;
 
-      constructor(
-                  private utilsService: UtilsService,
-                  private chatbotService: ChatbotService,
-                  private conversationService : ConversationService
-                ) {
+  @ViewChild('message') msgInput: ElementRef;
     
-      }
-    
-      ngOnInit() {
-        if (this.userSession.inputType === "address") {
-          this.placeholderMsg = "주소를 입력해 주세요.";
-        } else {
-          this.placeholderMsg = "내용을 입력해 주세요.";
-        }
-      }
-    
-      public sendMsg(msg) {
+  public placeholderMsg = "내용을 입력해 주세요.";
+  
+  private params:Inquiry;
+  
+  @SessionStorage('userSession')
+  public userSession: Session;
 
-        const userMsg:UserMsg = {msgType:"UserMsg", userId: uuid(), message:msg.value, telId:'010-1234-5678'};
-        this.conversationService.broadcast(new Conversation(ConversationWriter.CUSTOMER, userMsg, Date.now()));
+  private chatBotMsgApiCallback = () => {
+    console.log("---------->>>>> chatBotMsgApiCallback <<<<----------------");
+  
+    // Reset lastRspDeliveryList lastRspReserveList for company type member
+    if (this.userSession.company == "0000000000") {
 
-        this.params = this.utilsService.getInitInquiryData();
-        this.params.question = msg.value;
-        this.chatbotService.chatBotMsgApiCall(this.params).add(this.chatBotMsgApiCallback);
-
-        msg.value="";
-        msg.focus();
-    
-      }
-
-      public inputKeyupEvt(msg) {
-        if (msg.value.length > 0) {
-          // if (this.msgInputCheckTimer.closed) {
-    
-          // } else {
-          //   // Clear Input Timer Start
-          //   this.msgInputCheckTimer.unsubscribe();
-          // }
-        } else {
-          console.log("msg is empty!!!");
-        }
-      }
-    
+    } else {
+        this.userSession.lastRspDeliveryList = null;
+        this.userSession.lastRspReserveList = null;
     }
+
+  };
+
+  constructor(
+              private utilsService: UtilsService,
+              private chatbotService: ChatbotService,
+              private conversationService : ConversationService
+            ) {
+
+  }
+
+  ngOnInit() {
+    if (this.userSession.inputType === "address") {
+      this.placeholderMsg = "주소를 입력해 주세요.";
+    } else {
+      this.placeholderMsg = "내용을 입력해 주세요.";
+    }
+  }
+  
+  public userSessionInit() {
+    this.userSession.lastRspDeliveryList = null;
+    this.userSession.lastRspReserveList = null;
+    this.userSession = this.userSession;
+  }
+
+  public showFaq() {
+    const params = {custCode: this.userSession.company};
+    this.chatbotService.chatBotInitMsgApiCall(params, ["initMsg", "notice"]);
+  }
+
+  public showNotice() {
+    const params = {custCode: this.userSession.company};
+    this.chatbotService.chatBotInitMsgApiCall(params, ["initMsg", "topQuestionInfoVo"]);
+  }
+  
+  public sendMsg(msg) {
+
+    const userMsg:UserMsg = {msgType:"UserMsg", userId: uuid(), message:msg.value, telId:'010-1234-5678'};
+    this.conversationService.broadcast(new Conversation(ConversationWriter.CUSTOMER, userMsg, Date.now()));
+
+    this.params = this.utilsService.getInitInquiryData();
+    this.params.question = msg.value;
+    this.chatbotService.chatBotMsgApiCall(this.params).add(this.chatBotMsgApiCallback);
+
+    msg.value="";
+    msg.focus();
+
+  }
+
+  public inputKeyupEvt(msg) {
+    if (msg.value.length > 0) {
+      // if (this.msgInputCheckTimer.closed) {
+
+      // } else {
+      //   // Clear Input Timer Start
+      //   this.msgInputCheckTimer.unsubscribe();
+      // }
+    } else {
+      console.log("msg is empty!!!");
+    }
+  }
+
+}

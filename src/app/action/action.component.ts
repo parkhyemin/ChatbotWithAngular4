@@ -39,7 +39,7 @@ export class ActionComponent implements OnInit {
 
     Observable.timer(100).subscribe(val => {
       const params = {custCode: this.userSession.company};
-      this.chatbotService.chatBotInitMsgApiCall(params);
+      this.chatbotService.chatBotInitMsgApiCall(params,["topQuestionInfoVo"]);
     });
 
   }

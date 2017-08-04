@@ -74,12 +74,13 @@ export class ChatbotService {
         );
     }
 
-  public chatBotInitMsgApiCall(params: object): Subscription {
+  public chatBotInitMsgApiCall(params: object, disableFields: Array<string>): Subscription {
     return this.clonedApi.post('/finbot/init.wn', params)
         .subscribe(
         res => {
             res.msgType = 'AiBotInitMsg';
             let aiBotInitMsg: AiBotInitMsg = res;
+            disableFields.forEach((fieldNm) => aiBotInitMsg[fieldNm] = null);
             this.conversationService.broadcast(new Conversation(ConversationWriter.AI, aiBotInitMsg, Date.now()));
         },
         error => {

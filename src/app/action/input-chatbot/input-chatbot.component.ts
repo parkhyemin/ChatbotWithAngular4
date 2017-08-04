@@ -35,6 +35,19 @@ import { Session } from '../../models/session.model';
       @SessionStorage('userSession')
       public userSession: Session;
 
+      private chatBotMsgApiCallback = () => {
+        console.log("---------->>>>> chatBotMsgApiCallback <<<<----------------");
+      
+        // Reset lastRspDeliveryList lastRspReserveList for company type member
+        if (this.userSession.company == "0000000000") {
+    
+        } else {
+            this.userSession.lastRspDeliveryList = null;
+            this.userSession.lastRspReserveList = null;
+        }
+    
+      };
+
       constructor(
                   private utilsService: UtilsService,
                   private chatbotService: ChatbotService,
@@ -58,7 +71,7 @@ import { Session } from '../../models/session.model';
 
         this.params = this.utilsService.getInitInquiryData();
         this.params.question = msg.value;
-        this.chatbotService.chatBotMsgApiCall(this.params);
+        this.chatbotService.chatBotMsgApiCall(this.params).add(this.chatBotMsgApiCallback);
 
         msg.value="";
         msg.focus();

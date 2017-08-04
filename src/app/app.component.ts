@@ -42,7 +42,7 @@ export class AppComponent {
 
     this.userSession.media = 'APP';
     this.userSession.phone = '010-1234-5678';
-    this.userSession.company = '1';
+    this.userSession.company = '0000000000';
     this.userSession.deviceId = '';
     this.userSession.sessionKey = 'TestSessionKey_PHM_20170804';
     

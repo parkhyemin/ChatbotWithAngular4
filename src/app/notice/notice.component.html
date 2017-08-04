@@ -1,0 +1,13 @@
+<md-card-header [class.selectedInvoice]="selected">
+  <md-card-title *ngIf="!showNotice">  &nbsp; &nbsp; &nbsp; </md-card-title>
+  <md-card-title [class.selectedInvoice]="selected" *ngIf="showNotice">
+    <span class="notice">제품명 : {{ productNm }} 송장번호 : {{ deliveryNum }}</span>
+    <button class="noticeExit" [class.selectedInvoice]="selected" (click)="closeNotice()">X</button> 
+  </md-card-title>
+  
+   <img class="topbarImg" [class.selectedInvoice]="selected" src="{{ locPath }}/assets/image/topbar.jpg" alt="topbar image"> 
+    <span class="topbarDate" [class.selectedInvoice]="selected">
+      {{ today | date :'yyyy년 MM월 dd일' }} {{ weekDayNm }}
+    </span>
+  
+</md-card-header>

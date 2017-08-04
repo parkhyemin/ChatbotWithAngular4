@@ -11,13 +11,16 @@ import { AppComponent } from './app.component';
 import { ActionModule } from './action/action.module';
 import { ContentModule } from './content/content.module';
 import { ServiceModule } from './service/service.module';
+import { ShortenPipe } from 'ngx-pipes/src/app/pipes/string/shorten';
 
 import { UtilsService } from './service/utils.service';
 import { routing, appRoutingProviders } from './app.routing';
+import { NoticeComponent } from './notice/notice.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NoticeComponent
   ],
   imports: [
     routing,
@@ -35,6 +38,7 @@ import { routing, appRoutingProviders } from './app.routing';
     RouterModule
   ],
   providers: [
+    ShortenPipe,
     appRoutingProviders,
     ContentModule
   ],

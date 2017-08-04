@@ -7,7 +7,6 @@ import { MdInputModule, MdButtonModule, MdButtonToggleModule, MdCardModule, MdMe
 import { Router, ActivatedRoute, NavigationCancel, Params } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ContentComponent } from './content/content.component';
 
 import { ActionModule } from './action/action.module';
 import { ContentModule } from './content/content.module';
@@ -36,7 +35,8 @@ import { routing, appRoutingProviders } from './app.routing';
     RouterModule
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    ContentModule
   ],
   bootstrap: [AppComponent]
 })

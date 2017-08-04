@@ -2,10 +2,8 @@ import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit }
 import { Subscription } from 'rxjs/Subscription'
 import { Observable } from 'rxjs/Observable'
 
-import { Conversation } from '../models/conversation.model';
 import { Inquiry } from '../models/inquiry.model';
 
-import { UtilsService } from '../service/utils.service';
 import { ChatbotService } from '../service/chatbot.service';
 
 @Component({

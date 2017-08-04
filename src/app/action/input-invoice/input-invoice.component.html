@@ -1,0 +1,10 @@
+<table class="cj-chatbot-full-width" cellspacing="0">
+  <tr>
+    <td width="85%">
+      <label for="cj-chatbot-msg-input-box"><input #invoiceNumber class="cj-chatbot-msg-inputInvoice-box" mdInput (keyup.enter)="save(invoiceNumber)" placeholder="송장 번호를 입력해주세요."></label>
+    </td>
+    <td width="15%">
+      <button id="cj-chatbot-sendMsg-button" (click)="save(invoiceNumber)">저장</button>
+    </td>
+  </tr>
+</table>

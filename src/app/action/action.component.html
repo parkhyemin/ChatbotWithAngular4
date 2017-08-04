@@ -1,5 +1,10 @@
 <md-card-actions class="cj-chatbot-card-action">
-    <ng-container>
-        <app-input-chatbot></app-input-chatbot>
+    <ng-container [ngSwitch]="inputType">
+        <ng-container *ngSwitchCase="'invoice'">
+            <app-input-invoice></app-input-invoice>
+        </ng-container>
+        <ng-container *ngSwitchCase="'chatbot'">
+            <app-input-chatbot></app-input-chatbot>
+        </ng-container>
     </ng-container>
 </md-card-actions>

@@ -42,7 +42,7 @@ import { NgxAutoScroll } from '../directives/ngx-auto-scroll.directive';
       WeekDayPipe
     ],
     providers: [
-      ContentComponent
+
     ]
   })
 export class ContentModule { }

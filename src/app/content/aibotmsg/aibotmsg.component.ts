@@ -1,16 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
+import { LocalStorageService, SessionStorageService, SessionStorage } from 'ngx-webstorage';
 
 import { AiBotMsg } from '../../models/aibotmsg.model';
 import { RspMoreAnswer} from '../../models/rspMoreAnswer.model';
 import { Inquiry } from '../../models/inquiry.model';
+import { Session } from '../../models/session.model';
+import { RspDeliveryList } from '../../models/rspDeliveryList.model';
+
 import { ApiService  } from '../../service/api.service';
 import { ChatbotService  } from '../../service/chatbot.service';
 import { UtilsService } from '../../service/utils.service';
 import { ContentComponent } from '../../content/content.component';
 import { ConversationService } from '../../service/conversation.service';
 
-import { RspDeliveryList } from '../../models/rspDeliveryList.model';
 
 @Component({
   selector: 'chat-content-aibotmsg',
@@ -29,6 +32,10 @@ export class AibotmsgComponent  {
   public locPath: string = "/";
 
   private rtnParams:Inquiry;
+
+  @SessionStorage('userSession')
+  private userSession: Session;
+
   constructor(private conversationService: ConversationService,
               private chatbotService: ChatbotService,
               private utilsService: UtilsService,
@@ -66,7 +73,6 @@ export class AibotmsgComponent  {
 
   // 더보기
   public showMoreDelivList(numOfList) {
-    console.log('showMoreDelivList');
     if ( this.aiBotMsg.responseDeliveryList.length > this.maxDeliveryNum ) {
       this.maxDeliveryNum = this.maxDeliveryNum + numOfList;
     }
@@ -74,8 +80,17 @@ export class AibotmsgComponent  {
 
   // 송장번호 입력
   public showInvoiceInputBox() {
-    // ... input 쪽도 수정필요
-    this.showInvoiceToggle = !this.showInvoiceToggle;
+    if (this.userSession.inputType === "deepchat") {
+      
+    } else {
+      this.showInvoiceToggle = !this.showInvoiceToggle;
+      if (this.showInvoiceToggle) {
+        this.userSession.inputType = "invoice";
+      } else {
+        this.userSession.inputType = "chatbot";
+      }
+      this.userSession = this.userSession;
+    }
   }
  
 }

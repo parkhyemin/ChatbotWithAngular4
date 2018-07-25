@@ -43,3 +43,5 @@ Thumbs.db
 
 # font
 *.otf
+
+package-lock.json
